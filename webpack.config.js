@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ['./src/index.js', './src/style.less'],
+    entry: ['babel-polyfill', './src/index.js', './src/main.less'],
     module: {
         rules: [
             {
@@ -16,6 +16,17 @@ module.exports = {
                     'less-loader'
                 ]
             },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['@babel/preset-env']
+                  }
+                }
+              
+            }
         ]
     },
     devtool: 'inline-source-map',
@@ -23,13 +34,6 @@ module.exports = {
         contentBase: './dist',
     },
     plugins: [
-        // new CopyPlugin([
-        //     {
-        //         from: 'src/assets',
-        //         to: 'assets',
-        //         force: true
-        //     }
-        // ]),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
