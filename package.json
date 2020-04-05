@@ -7,6 +7,7 @@
     "build": "node_modules/.bin/webpack",
     "watch": "node_modules/.bin/webpack --watch",
     "start": "webpack-dev-server --open",
+    "deploy": "node_modules/.bin/gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,10 +15,16 @@
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
+    "gh-pages": "^2.2.0",
     "html-webpack-plugin": "^4.0.4",
+    "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "node-w3c-validator": "^1.6.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "less": "^3.11.1"
   }
 }

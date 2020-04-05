@@ -1,0 +1,29 @@
+name: Lint and Deploy
+on:
+    pull_request:
+    push:
+        branches:
+            - master
+
+jobs:
+    lint:
+        name: "Lint and Deploy"
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node 12
+              uses: actions/setup-node@v1
+              with:
+                node-version: 12.x
+            - run: npm i
+              name: Install dependencies
+            - run: node_modules/.bin/node-w3c-validator -i src/index.html 
+              name: HTML W3C validation
+            - run: npm run build
+              name: Build
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                BRANCH: gh-pages 
+                FOLDER: dist
