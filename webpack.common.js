@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: ['babel-polyfill', './src/index.js', './src/styles/main.less'],
     module: {
         rules: [
@@ -28,10 +27,6 @@ module.exports = {
               
             }
         ]
-    },
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist',
     },
     plugins: [
         new CleanWebpackPlugin(),

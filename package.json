@@ -4,9 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "node_modules/.bin/webpack",
-    "watch": "node_modules/.bin/webpack --watch",
-    "start": "webpack-dev-server --open",
+    "build": "node_modules/.bin/webpack --config webpack.prod.js",
+    "start": "node_modules/.bin/webpack-dev-server --open --config webpack.dev.js",
     "deploy": "node_modules/.bin/gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,7 +26,8 @@
     "node-w3c-validator": "^1.6.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

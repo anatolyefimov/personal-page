@@ -38,14 +38,6 @@ printToken($cons, cons)
     .then(() => printToken($rightBrack, rightBrack))
     .then(() => printToken($semicolon, semicolon))
     .then(() => printToken($comment, comment))
-    .then(() => {
-        document.querySelector('.comment').innerHTML += `<span style='width: 3px; text-align: center;'>` + cursor + `</span>`
-        let $cursor = document.querySelector('.cursor');
-        setInterval(() => {
-            $cursor.style.display = $cursor.style.display === 'none' ? 'inline' : 'none';
-        }, 600)
-    })
-
 
 let $infoItems = document.querySelectorAll('.info__name')
 
