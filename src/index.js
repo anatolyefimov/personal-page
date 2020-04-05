@@ -6,6 +6,7 @@ let $leftBrack = $greeting.querySelector('.punctuation.l-brack');
 let $str = $greeting.querySelector('.string');
 let $rightBrack = $greeting.querySelector('.punctuation.r-brack');
 let $semicolon = $greeting.querySelector('.punctuation.semicolon');
+let $comment = document.querySelector('.comment')
 
 const cons = 'console';
 const dot = '.';
@@ -14,6 +15,7 @@ const leftBrack = '(';
 const rightBrack = ')';
 const semicolon = ';';
 const str = `'Hello 👋 \nЯ Ефимов Анатолий'`;
+const comment=`//Frontend === ❤`
 const cursor = `<span class="cursor" style="border-right: 2px solid blue; height: 100%"></span>`
 
 
@@ -25,7 +27,7 @@ function printToken(element, token, index = 0) {
     return new Promise(resolve => setTimeout(() => {
         element.innerHTML = element.textContent + token[index++] + cursor;
         resolve(printToken(element, token, index));
-    }, 100 + Math.floor(Math.random() * Math.floor(100))))
+    }, 100 + Math.floor(Math.random()*100)))
 }
 
 printToken($cons, cons)
@@ -35,17 +37,18 @@ printToken($cons, cons)
     .then(() => printToken($str, str))
     .then(() => printToken($rightBrack, rightBrack))
     .then(() => printToken($semicolon, semicolon))
+    .then(() => printToken($comment, comment))
     .then(() => {
-        $greeting.innerHTML += `<div style='width: 3px; text-align: center'>` + cursor + `</div>`
-        let $cursor = $greeting.querySelector('.cursor');
+        document.querySelector('.comment').innerHTML += `<span style='width: 3px; text-align: center;'>` + cursor + `</span>`
+        let $cursor = document.querySelector('.cursor');
         setInterval(() => {
-            $cursor.style.display = $cursor.style.display === 'none' ? 'inline-block' : 'none';
+            $cursor.style.display = $cursor.style.display === 'none' ? 'inline' : 'none';
         }, 600)
     })
 
 
-let $infoItems = document.querySelectorAll('.info__item')
+let $infoItems = document.querySelectorAll('.info__name')
 
 for (let $infoItem of $infoItems) {
-    $infoItem.addEventListener('click', () => $infoItem.classList.toggle('info__item_picked'));
+    $infoItem.addEventListener('click', () => $infoItem.parentNode.classList.toggle('info__item_picked'));
 }
