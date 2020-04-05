@@ -7,7 +7,7 @@
 Запуска dev-сервера
 ```
 $ npm i  
-$ npm 
+$ npm start
 ```
 Production сборка
 ```
