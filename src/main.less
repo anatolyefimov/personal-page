@@ -26,6 +26,7 @@ body {
 
     &__text {
         display: flex;
+        flex-wrap: wrap;
     }
 }
 
@@ -36,32 +37,39 @@ body {
         cursor: pointer;
         list-style-type: none;
         margin: 0;
-        font-size: 30px;
+        font-size: 18px;
         padding-left: 0;
         &_picked .info__name,
         &:hover .info__name{
-            background-color: black;   
-            color:white;
+            background-color:#45677980;
         }
+
+        &_picked .info__name {
+            border-bottom: none;
+        }
+
         &_picked .info__name::before {
-            transform: rotate(45deg);
+            content: '-';
+            
         }
 
         &_picked .info__content {
             height: auto;
-            padding: 15px 50px 15px;
+
+            border-left: 1px solid gray;
         }
     }
 
     &__name {
-        text-align: center;
         width: 100%;
-        font-family: 'Roboto Mono', monospace;
-        transition: 0.3s;
+        border-bottom: 1px solid gray;
         padding: 10px 20px 10px;
         
         &::before {
-            transition: 0.3s;
+            color: gray;
+            border: 1px solid gray;
+            padding: 0 5px;
+            font-size: 16px;
             display: inline-block;
             margin-right: 15px;
             content: '+'
@@ -70,13 +78,11 @@ body {
 
     &__content {
         font-family: 'Roboto', sans;
-        font-size: 20px;
         
         box-sizing: border-box;
-        transition-duration: 0.5s;
         height: 0;
         overflow: hidden;
-        padding-left: 50px;
+        margin-left: 30px;
     }
 }
 

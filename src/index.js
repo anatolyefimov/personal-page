@@ -14,7 +14,7 @@ const leftBrack = '(';
 const rightBrack = ')';
 const semicolon = ';';
 const str = `'Hello 👋 \nЯ Ефимов Анатолий'`;
-const cursor = `<span style="border-right: 2px solid blue;"></span>`
+const cursor = `<span class="cursor" style="border-right: 2px solid blue; height: 100%"></span>`
 
 
 function printToken(element, token, index = 0) {
@@ -34,7 +34,14 @@ printToken($cons, cons)
     .then(() => printToken($leftBrack, leftBrack))
     .then(() => printToken($str, str))
     .then(() => printToken($rightBrack, rightBrack))
-    .then(() => printToken($semicolon, semicolon));
+    .then(() => printToken($semicolon, semicolon))
+    .then(() => {
+        $greeting.innerHTML += `<div style='width: 3px; text-align: center'>` + cursor + `</div>`
+        let $cursor = $greeting.querySelector('.cursor');
+        setInterval(() => {
+            $cursor.style.display = $cursor.style.display === 'none' ? 'inline-block' : 'none';
+        }, 600)
+    })
 
 
 let $infoItems = document.querySelectorAll('.info__item')
